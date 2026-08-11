@@ -1,0 +1,13 @@
+# Python virtualenv
+.venv/
+
+# Benchmark outputs / scratch data
+io-uring/results/
+io-uring/scratch/
+
+# Build artifacts
+io-uring/iobench
+io-uring/netbench
+io-uring/uring_probe
+uffd/bin/
+*.o
