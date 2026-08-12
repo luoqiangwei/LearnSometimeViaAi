@@ -1,0 +1,17 @@
+# 运行产物
+reports/
+tmp_*.log
+
+# 慢盘镜像
+demos/.slowdisk.*
+
+# 编译产物
+demos/leak_demo
+demos/lock_demo
+bench/bench_fork
+bench/bench_ctxsw
+bench/bench_futex
+bench/bench_fault
+bench/bench_syscall
+
+__pycache__/

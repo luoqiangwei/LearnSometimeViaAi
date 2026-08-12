@@ -1,0 +1,109 @@
+{
+  "rounds": 3,
+  "benches": [
+    {
+      "name": "fork/exit 吞吐",
+      "hook": "sched_process_fork/exit",
+      "baseline": 6112.2,
+      "loaded": 7594.2,
+      "loaded_overhead_pct": -19.514892944615625
+    },
+    {
+      "name": "上下文切换吞吐",
+      "hook": "sched_switch",
+      "baseline": 119910.5,
+      "loaded": 109994.3,
+      "loaded_overhead_pct": 9.015194423711037
+    },
+    {
+      "name": "futex 操作吞吐",
+      "hook": "sys_enter/exit_futex",
+      "baseline": 231951.2,
+      "loaded": 217638.0,
+      "loaded_overhead_pct": 6.576608864260836
+    },
+    {
+      "name": "页错误吞吐",
+      "hook": "page_fault_user(+抓栈)",
+      "baseline": 458594.6,
+      "loaded": 423229.5,
+      "loaded_overhead_pct": 8.35601015524674,
+      "armed_1_1": 316206.9,
+      "armed_1_16": 389159.9,
+      "armed_overhead_pct_1_1": 45.02991553947746,
+      "armed_overhead_pct_1_16": 17.842203166359116
+    },
+    {
+      "name": "getpid 吞吐(对照)",
+      "hook": "无(对照组)",
+      "baseline": 2233375.8,
+      "loaded": 2037176.4,
+      "loaded_overhead_pct": 9.630948012160356
+    }
+  ],
+  "prog_stats": [
+    {
+      "name": "sysctl_monitor",
+      "type": "cgroup_sysctl",
+      "run_cnt": 30,
+      "avg_ns": 1095.0666666666666
+    },
+    {
+      "name": "tracepoint__exceptions__page_fault_user",
+      "type": "tracepoint",
+      "run_cnt": 125725,
+      "avg_ns": 110.52621992443825
+    },
+    {
+      "name": "tracepoint__sched__sched_process_exec",
+      "type": "tracepoint",
+      "run_cnt": 52,
+      "avg_ns": 6346.923076923077
+    },
+    {
+      "name": "tracepoint__sched__sched_process_exit",
+      "type": "tracepoint",
+      "run_cnt": 5081,
+      "avg_ns": 1801.124581775241
+    },
+    {
+      "name": "tracepoint__sched__sched_process_fork",
+      "type": "tracepoint",
+      "run_cnt": 5083,
+      "avg_ns": 4060.680306905371
+    },
+    {
+      "name": "tracepoint__sched__sched_switch",
+      "type": "tracepoint",
+      "run_cnt": 454250,
+      "avg_ns": 238.80655806274078
+    },
+    {
+      "name": "tracepoint__syscalls__sys_enter_futex",
+      "type": "tracepoint",
+      "run_cnt": 233933,
+      "avg_ns": 135.40665489691492
+    },
+    {
+      "name": "tracepoint__syscalls__sys_exit_futex",
+      "type": "tracepoint",
+      "run_cnt": 233931,
+      "avg_ns": 176.14421346465411
+    }
+  ],
+  "map_mem": {
+    "total": 21437232,
+    "per_map": {
+      "lock_hold_start": 1000320,
+      "lock_pending": 82816,
+      "pf_counter": 328,
+      "stack_counts": 1311760,
+      "stack_traces": 17039672,
+      "armed": 82960,
+      "futex_start": 918400,
+      "d_start": 1000320,
+      "events": 320,
+      "config": 336
+    }
+  }
+}
