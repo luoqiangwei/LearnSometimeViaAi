@@ -15,3 +15,4 @@ bench/bench_fault
 bench/bench_syscall
 
 __pycache__/
+bench/bench_mapop

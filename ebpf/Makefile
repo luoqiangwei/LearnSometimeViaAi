@@ -7,7 +7,7 @@ LDFLAGS  = -lpthread
 
 DEMOS   = demos/leak_demo demos/lock_demo
 BENCH   = bench/bench_fork bench/bench_ctxsw bench/bench_futex \
-          bench/bench_fault bench/bench_syscall
+          bench/bench_fault bench/bench_syscall bench/bench_mapop
 
 all: $(DEMOS) $(BENCH)
 

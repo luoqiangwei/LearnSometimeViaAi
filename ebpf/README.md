@@ -38,9 +38,9 @@ src/        tracker.py（用户态主控）+ bpf_program.c（内核侧 BPF 程�
             + bpf_program_kprobe.c（kprobe 变体，--kprobe）
             + bpf_program_rawtp.c（raw tracepoint 变体，--raw-tp，生产优化方向）
 demos/      leak_demo（泄漏）、lock_demo（持锁）、make_slow_disk.sh（D 态慢盘）
-bench/      5 个微基准 + bench_overhead.py（开销测量编排）
+bench/      6 个微基准 + bench_overhead.py（开销测量编排）
             + bench_nostack.py / bench_probe_path.py / bench_kprobe.py
-            / bench_rawtp.py（专题测量）
+            / bench_rawtp.py（挂点专题）+ bench_comm.py / flame_comm.sh（通信专题）
 docs/       分享文档（见下）
 reports/    运行产物：事件日志 + 泄漏报告
 ```
@@ -53,9 +53,12 @@ reports/    运行产物：事件日志 + 泄漏报告
    map 表、双阈值状态机、已知限制
 3. [docs/03-usage.md](docs/03-usage.md) — 环境、参数与四个动手实验
 4. [docs/04-performance.md](docs/04-performance.md) — 性能开销：三层
-   测量方法、实测数据、外推结论
+   测量方法、实测数据、外推结论、kprobe/raw tracepoint 挂点对照
 5. [docs/05-case-study.md](docs/05-case-study.md) — 一次泄漏自动处置的
    完整复盘（真实报告解读）
+6. [docs/06-communication.md](docs/06-communication.md) — 通信开销：
+   perfbuf vs ringbuf vs map 全路径测量、火焰图定位卡点、
+   map 批量操作
 
 ## 分享提纲（60 分钟建议）
 
@@ -66,3 +69,4 @@ reports/    运行产物：事件日志 + 泄漏报告
 | 15' | 系统设计：为什么内核只计数、决策在用户态；双阈值状态机 | docs/02 |
 | 15' | 现场演示：leak_demo 从越线到 Top10 报告到被杀 | docs/03、05 |
 | 10' | 性能开销：三层测量 + 采样率杠杆 + 20MB map 预算 | docs/04 |
+| 10' | 通信与挂点选型：perfbuf vs ringbuf 火焰图、raw tracepoint | docs/06、04 |
